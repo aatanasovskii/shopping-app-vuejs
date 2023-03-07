@@ -20,7 +20,7 @@
         <label>Description:</label>
         <textarea placeholder="Add description" id="description" v-model="category.description"></textarea>
       </div>
-      <button type="submit">Add Todo Item</button>
+      <button type="submit">Add Category</button>
       <p class="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
       <div class="reset">
         <input type="reset" />

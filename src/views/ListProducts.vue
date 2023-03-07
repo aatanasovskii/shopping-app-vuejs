@@ -2,12 +2,13 @@
   <div class="categories">
     <h2>Your Products: </h2>
     <table>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Categories</th>
+      </tr>
       <tr v-for="(product, index) in products.products" :key="index">
         <td>{{ product.title }}</td>
-        <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
       </tr>
     </table>

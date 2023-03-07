@@ -2,8 +2,10 @@
   <div class="categories">
     <h2>Your Categories: </h2>
     <table>
-      <th>Title</th>
-      <th>Description</th>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
       <tr v-for="(category, index) in categories.categories" :key="index">
         <td>{{ category.title }}</td>
         <td>{{ category.description }}</td>

@@ -41,18 +41,24 @@
           <p class="error" v-if="!$v.product.price.required">Price is required!</p>
         </div>
       </div>
-      <button type="submit">Add Todo Item</button>
+      <button type="submit">Add Product</button>
       <p class="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
       <div class="reset">
         <input type="reset" />
+      </div>
+      <div>
+        <Multiselect v-model="product.category" :options="categories"></Multiselect>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect';
+import "vue-multiselect/dist/vue-multiselect.min.css";
 import { required } from 'vuelidate/lib/validators';
 export default {
+  components: { Multiselect },
   data() {
     return {
       product: {},
@@ -64,6 +70,11 @@ export default {
       title: { required },
       description: { required },
       price: { required },
+    },
+  },
+  computed: {
+    categories() {
+      return this.$store.state.categories;
     },
   },
   methods: {
