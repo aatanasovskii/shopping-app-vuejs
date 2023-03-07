@@ -1,0 +1,77 @@
+<template>
+  <div class="create-category">
+    <h2>Create New Category</h2>
+    <form @submit.prevent="submitForm" novalidate>
+      <div>
+        <label>Title: </label>
+        <input
+            placeholder="Add title"
+            type="text"
+            id="title"
+            v-model="category.title"
+            :class="{ error: $v.category.title.$error }"
+            @blur="$v.category.title.$touch()"
+        />
+        <div v-if="$v.category.title.$error">
+          <p class="error" v-if="!$v.category.title.required">Title is required!</p>
+        </div>
+      </div>
+      <div>
+        <label>Description:</label>
+        <textarea placeholder="Add description" id="description" v-model="category.description"></textarea>
+      </div>
+      <button type="submit">Add Todo Item</button>
+      <p class="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
+      <div class="reset">
+        <input type="reset" />
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+import { required } from 'vuelidate/lib/validators'
+export default {
+  data() {
+    return {
+      category: {},
+      submitStatus: null,
+    };
+  },
+  validations: {
+    category: {
+      title: {
+        required
+      },
+    },
+  },
+  computed: {},
+  methods: {
+    submitForm() {
+      this.$v.$touch();
+      // if (!this.$v.$invalid) {
+      //   return false;
+      // }
+      if(this.$v.$error) {
+        this.submitStatus = "ERROR";
+        return false;
+      }
+      this.submitStatus = "null";
+      console.log(this.category);
+      this.addCategory(this.category);
+    },
+    addCategory() {
+      this.$store.commit("categories/ADD_CATEGORY", this.category, { root: true });
+    },
+  },
+}
+</script>
+
+<style>
+.error{
+  color: red;
+}
+.reset {
+  margin-top: 10px;
+}
+</style>
