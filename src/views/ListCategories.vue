@@ -30,6 +30,7 @@ table, th, td {
   border-collapse: collapse;
   width: 75% ;
   table-layout: fixed;
+  padding: 15px;
   margin-left:auto;
   margin-right:auto;
 }

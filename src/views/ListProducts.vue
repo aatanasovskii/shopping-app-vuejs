@@ -10,10 +10,13 @@
       <tr v-for="(product, index) in products.products" :key="index">
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
-        <td>{{ product.category }}</td>
-<!--        <td v-for="category in product.category">-->
-<!--          {{ category.title }}-->
-<!--        </td>-->
+        <td v-for="category in product.category" colspan="product.category.length">
+          {{ category.title }}
+        </td>
+        <span>
+          <button>Publish</button>
+          <button @click="deleteProduct(index)">Delete</button>
+        </span>
       </tr>
     </table>
   </div>
@@ -33,7 +36,11 @@ export default {
     //   return this.$store.state.products;
     // },
   },
-  methods: {},
+  methods: {
+    deleteProduct(index) {
+      this.$store.commit("products/DELETE_PRODUCT", index, { root: true });
+    },
+  },
 }
 </script>
 
@@ -45,6 +52,7 @@ table, th, td {
   table-layout: fixed;
   margin-left:auto;
   margin-right:auto;
+  padding: 15px;
 }
 th {
   font-weight: bold;
