@@ -11,27 +11,27 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'admin',
+    name: 'admin-view',
     component: AdminView,
   },
   {
     path: '/admin/category-create',
-    name: 'admin',
+    name: 'category-create',
     component: CreateCategory
   },
   {
     path: '/admin/categories',
-    name: '',
+    name: 'categories',
     component: ListCategories
   },
   {
     path: '/admin/product-create',
-    name: '',
+    name: 'product-create',
     component: CreateProduct
   },
   {
     path: '/admin/products',
-    name: '',
+    name: 'products',
     component: ListProducts
   }
 ]
