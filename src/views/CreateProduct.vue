@@ -52,7 +52,12 @@
             :hide-selected="true"
             :custom-label="searchCategoryTitle"
             placeholder="Search Category"
+            :class="{ error: $v.product.category.$error }"
+            @blur="$v.product.category.$touch()"
         ></multiselect>
+        <div v-if="$v.product.category.$error">
+          <p class="error" v-if="!$v.product.category.required">Category is required!</p>
+        </div>
       </div>
       <button type="submit">Add Product</button>
       <p class="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
@@ -71,7 +76,9 @@ export default {
   components: { Multiselect },
   data() {
     return {
-      product: {},
+      product: {
+        published: false,
+      },
       submitStatus: null,
     };
   },
@@ -80,6 +87,7 @@ export default {
       title: { required },
       description: { required },
       price: { required },
+      category: { required },
     },
   },
   computed: {

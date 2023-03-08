@@ -4,22 +4,24 @@
     <input id="searchProducts" v-model="searchProducts" type="search" />
     <h2>Your Products:</h2>
     <table class="table">
-      <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Category</th>
-      </tr>
-      <tr v-for="(product, index) in productsFinal" :key="index">
-        <td>{{ product.title }}</td>
-        <td>{{ product.price }}</td>
-        <td v-for="category in product.category" colspan="product.category.length">
-          {{ category.title }}
-        </td>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody v-for="(product, index) in productsFinal" :key="product.title">
+        <tr>
+          <td>{{ product.title }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.category }}</td>
         <span>
-          <button :disabled="products.published" @click="publishProduct(index)">Publish</button>
+          <button :disabled="product.published" @click="publishProduct(index)">Publish</button>
           <button @click="deleteProduct(index)">Delete</button>
         </span>
-      </tr>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -39,11 +41,14 @@ export default {
     //   return this.$store.state.products;
     // },
     productsFinal() {
-      return this.searchProducts.length === 0
+      return (this.searchProducts.length === 0
           ? this.products.products
           : this.products.products.filter(
               (product) => product.title === this.searchProducts
-          );
+          )).map(product =>({
+        ...product,
+        category: product.category.map(cat => cat.title).join(',')
+      }))
     },
   },
   methods: {
