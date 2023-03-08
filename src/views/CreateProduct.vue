@@ -41,13 +41,23 @@
           <p class="error" v-if="!$v.product.price.required">Price is required!</p>
         </div>
       </div>
+      <div>
+        <label>Category:</label>
+        <multiselect
+            v-model="product.category"
+            :options="categories.categories"
+            track-by="title"
+            :multiple="true"
+            :close-on-select="false"
+            :hide-selected="true"
+            :custom-label="searchCategoryTitle"
+            placeholder="Search Category"
+        ></multiselect>
+      </div>
       <button type="submit">Add Product</button>
       <p class="error" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
       <div class="reset">
         <input type="reset" />
-      </div>
-      <div>
-        <Multiselect v-model="product.category" :options="categories"></Multiselect>
       </div>
     </form>
   </div>
@@ -55,8 +65,8 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import "vue-multiselect/dist/vue-multiselect.min.css";
 import { required } from 'vuelidate/lib/validators';
+import {mapState} from "vuex";
 export default {
   components: { Multiselect },
   data() {
@@ -73,9 +83,7 @@ export default {
     },
   },
   computed: {
-    categories() {
-      return this.$store.state.categories;
-    },
+    ...mapState(['categories']),
   },
   methods: {
     submitForm() {
@@ -94,10 +102,12 @@ export default {
     addProduct() {
       this.$store.commit("products/ADD_PRODUCT", this.product);
     },
+    searchCategoryTitle ({ title, description }) {
+      return `${title} — ${description}`
+    },
   },
 }
 </script>
 
-<style scoped>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css">
 </style>

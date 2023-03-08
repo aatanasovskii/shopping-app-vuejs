@@ -1,6 +1,6 @@
 <template>
   <div class="categories">
-    <h2>Your Categories: </h2>
+    <h2>Your Categories:</h2>
     <table>
       <tr>
         <th>Title</th>
@@ -15,11 +15,10 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
 export default {
   computed: {
-    categories() {
-      return this.$store.state.categories;
-    },
+    ...mapState(['categories']),
   },
   methods: {},
 }

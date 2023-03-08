@@ -68,6 +68,9 @@ export default {
 </script>
 
 <style>
+.create-category {
+  align-items: center;
+}
 .error{
   color: red;
 }

@@ -1,26 +1,37 @@
 <template>
   <div class="categories">
-    <h2>Your Products: </h2>
+    <h2>Your Products:</h2>
     <table>
       <tr>
         <th>Title</th>
         <th>Price</th>
-        <th>Categories</th>
+        <th>Category</th>
       </tr>
       <tr v-for="(product, index) in products.products" :key="index">
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+<!--        <td v-for="category in product.category">-->
+<!--          {{ category.title }}-->
+<!--        </td>-->
       </tr>
     </table>
   </div>
 </template>
 
 <script>
+import {mapState} from "vuex";
 export default {
+  data() {
+    return {
+      converted: [],
+    };
+  },
   computed: {
-    products() {
-      return this.$store.state.products;
-    },
+    ...mapState(['products']),
+    // products() {
+    //   return this.$store.state.products;
+    // },
   },
   methods: {},
 }
