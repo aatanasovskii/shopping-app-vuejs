@@ -12,7 +12,9 @@ export const state = {
                 title: "Test 1",
             },
                 {title: "Test 2"
-                }]
+                }
+                ],
+            published: false,
         },
         {
             title: "Test 2",
@@ -20,7 +22,8 @@ export const state = {
             price: "200$",
             category: [{
                 title: "Test 1"
-            }]
+            }],
+            published: false,
         }
     ],
 }
@@ -35,5 +38,9 @@ export const mutations = {
     },
     DELETE_PRODUCT(state, index) {
         state.products.splice(index, 1);
+        state.numberProducts--;
+    },
+    PUBLISH_PRODUCT(state, index) {
+        state.products[index].published = true;
     },
 }

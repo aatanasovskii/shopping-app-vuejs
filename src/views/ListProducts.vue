@@ -1,20 +1,22 @@
 <template>
   <div class="categories">
+    <label>Search Products:</label>
+    <input id="searchProducts" v-model="searchProducts" type="search" />
     <h2>Your Products:</h2>
-    <table>
+    <table class="table">
       <tr>
         <th>Title</th>
         <th>Price</th>
         <th>Category</th>
       </tr>
-      <tr v-for="(product, index) in products.products" :key="index">
+      <tr v-for="(product, index) in productsFinal" :key="index">
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
         <td v-for="category in product.category" colspan="product.category.length">
           {{ category.title }}
         </td>
         <span>
-          <button>Publish</button>
+          <button :disabled="products.published" @click="publishProduct(index)">Publish</button>
           <button @click="deleteProduct(index)">Delete</button>
         </span>
       </tr>
@@ -28,6 +30,7 @@ export default {
   data() {
     return {
       converted: [],
+      searchProducts: ""
     };
   },
   computed: {
@@ -35,10 +38,20 @@ export default {
     // products() {
     //   return this.$store.state.products;
     // },
+    productsFinal() {
+      return this.searchProducts.length === 0
+          ? this.products.products
+          : this.products.products.filter(
+              (product) => product.title === this.searchProducts
+          );
+    },
   },
   methods: {
     deleteProduct(index) {
       this.$store.commit("products/DELETE_PRODUCT", index, { root: true });
+    },
+    publishProduct(index) {
+      this.$store.commit("products/PUBLISH_PRODUCT", index, { root: true });
     },
   },
 }
