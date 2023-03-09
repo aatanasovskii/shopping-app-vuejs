@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import CreateCategory from '../views/CreateCategory.vue'
 import ListCategories from '../views/ListCategories.vue'
 import AdminView from "@/views/AdminView.vue";
-import PublishView from "@/views/public/PublishView.vue";
+import ProductsPage from "@/views/public/ProductsPage.vue";
 import CreateProduct from '../views/CreateProduct.vue'
 import ListProducts from '../views/ListProducts.vue'
 import ProductDetailsPage from "@/views/public/ProductDetailsPage.vue";
@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/publish',
     name: 'publish-view',
-    component: PublishView,
+    component: ProductsPage,
   },
   {
     path: '/admin/category-create',
