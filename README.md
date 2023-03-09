@@ -1,5 +1,3 @@
-# shopping-app-vuejs
-
 # shopping-app
 
 ## Project setup

@@ -2,6 +2,7 @@
   <div id="nav" class="nav">
     <nav>
       <router-link to="/publish">Products Page</router-link> |
+      <router-link to="/shopping-cart">Shopping Cart</router-link> |
       <router-link to='/'>Admin View</router-link>  |
       <router-link to='/admin/category-create'>Crete a Category</router-link> |
       <router-link to='/admin/categories'>List of Categories</router-link> |

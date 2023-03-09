@@ -19,6 +19,9 @@
           </router-link>
         </ul>
       </ol>
+      <p>Add the quantity of the product:</p>
+      <input id="quantity" placeholder="add quantity" v-model="quantity" />
+      <button type="submit" @click="addQuantity(quantity)">Add Quantity</button>
     </div>
   </div>
 </template>
@@ -26,9 +29,19 @@
 <script>
 import {mapState} from "vuex";
 export default {
+  data() {
+    return {
+      quantity: 0,
+      temp: {},
+    };
+  },
   props: {
     product: {
       type: Object,
+      required: true,
+    },
+    index: {
+      type: Number,
       required: true,
     },
   },
@@ -39,10 +52,18 @@ export default {
       return this.product;
     },
   },
+  methods: {
+    addQuantity(quantity) {
+      this.temp.index = this.index;
+      this.temp.quantity = quantity;
+      this.$store.commit("products/ADD_QUANTITY", this.temp, { root: true });
+      this.quantity = 0;
+    },
+  },
 
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

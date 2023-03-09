@@ -8,6 +8,7 @@ import CreateProduct from '../views/CreateProduct.vue'
 import ListProducts from '../views/ListProducts.vue'
 import ProductDetailsPage from "@/views/public/ProductDetailsPage.vue";
 import CategoryProductsPage from "@/views/public/CategoryProductsPage.vue";
+import ShoppingCart from "@/views/public/ShoppingCart.vue";
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
     name: 'category-products',
     component: CategoryProductsPage,
     props: true
+  },
+  {
+    path: '/shopping-cart',
+    name: 'shopping-cart',
+    component: ShoppingCart
   }
 ]
 

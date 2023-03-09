@@ -15,6 +15,7 @@ export const state = {
                 }
                 ],
             published: false,
+            quantity: 0,
         },
         {
             title: "Test 2",
@@ -24,6 +25,17 @@ export const state = {
                 title: "test1"
             }],
             published: true,
+            quantity: 0,
+        },
+        {
+            title: "Test 3",
+            description: "test3",
+            price: "500$",
+            category: [{
+                title: "test3"
+            }],
+            published: true,
+            quantity: 1,
         }
     ],
 }
@@ -42,5 +54,15 @@ export const mutations = {
     },
     PUBLISH_PRODUCT(state, index) {
         state.products[index].published = true;
+    },
+    ADD_TO_CART(state, index) {
+        if (state.products[index].quantity === 0) {
+            state.products[index].quantity = 1;
+        };
+    },
+    ADD_QUANTITY(state, temp ) {
+        let index = temp.index;
+        let quantity = temp.quantity;
+        state.products[index].quantity = quantity;
     },
 }
