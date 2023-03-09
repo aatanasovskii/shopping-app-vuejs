@@ -4,11 +4,11 @@ export const state = {
     numberCategories: 0,
     categories: [
         {
-            title: "Test 1",
+            title: "test1",
             description: "asd",
         },
         {
-            title: "Test 2",
+            title: "test2",
             description: "ppp",
         }
     ],

@@ -3,9 +3,11 @@ import VueRouter from 'vue-router'
 import CreateCategory from '../views/CreateCategory.vue'
 import ListCategories from '../views/ListCategories.vue'
 import AdminView from "@/views/AdminView.vue";
-import PublishView from "@/views/PublishView.vue";
+import PublishView from "@/views/public/PublishView.vue";
 import CreateProduct from '../views/CreateProduct.vue'
 import ListProducts from '../views/ListProducts.vue'
+import ProductDetailsPage from "@/views/public/ProductDetailsPage.vue";
+import CategoryProductsPage from "@/views/public/CategoryProductsPage.vue";
 
 Vue.use(VueRouter)
 
@@ -39,6 +41,18 @@ const routes = [
     path: '/admin/products',
     name: 'products',
     component: ListProducts
+  },
+  {
+    path: '/product-details/:product',
+    name: 'product-details',
+    component: ProductDetailsPage,
+    props: true
+  },
+  {
+    path: '/category-products/:category',
+    name: 'category-products',
+    component: CategoryProductsPage,
+    props: true
   }
 ]
 

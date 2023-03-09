@@ -9,9 +9,9 @@ export const state = {
             description: "asd",
             price: "1200$",
             category: [{
-                title: "Test 1",
+                title: "test1",
             },
-                {title: "Test 2"
+                {title: "test2"
                 }
                 ],
             published: false,
@@ -21,9 +21,9 @@ export const state = {
             description: "ppp",
             price: "200$",
             category: [{
-                title: "Test 1"
+                title: "test1"
             }],
-            published: false,
+            published: true,
         }
     ],
 }
