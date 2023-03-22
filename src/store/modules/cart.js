@@ -48,6 +48,9 @@ export const getters = {
 
 export const mutations = {
     ADD_TO_CART(state, newCart) {
+        const productsFromProduct = getters.getProducts();
+        console.log(productsFromProduct);
+
         if (state.products[newCart.index].quantity === 0) {
             state.products[newCart.index].quantity = 1;
         };
