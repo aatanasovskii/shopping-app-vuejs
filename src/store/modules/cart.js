@@ -3,7 +3,7 @@ export const namespaced = true;
 export const state = {
     numberProducts: 0,
     numberColumns: 0,
-    products: [
+    productsCart: [
         {
             title: "Test 1",
             description: "asd",
@@ -13,7 +13,7 @@ export const state = {
             },
                 {title: "test2"
                 }
-                ],
+            ],
             published: false,
             quantity: 0,
         },
@@ -41,30 +41,21 @@ export const state = {
 }
 
 export const getters = {
-    getProducts(state) {
-        return state.products;
+    getProducts(state, getters, rootState) {
+        return rootState.products.products;
     }
 }
 
 export const mutations = {
-    ADD_PRODUCT(state, updatedProduct) {
-        state.products.push(updatedProduct);
-        state.numberProducts++;
-        if (state.numberColumns < updatedProduct.category.length) {
-            state.numberColumns = updatedProduct.category.length;
-        }
-    },
-    DELETE_PRODUCT(state, index) {
-        state.products.splice(index, 1);
-        state.numberProducts--;
-    },
-    PUBLISH_PRODUCT(state, index) {
-        state.products[index].published = true;
-    },
-    ADD_TO_CART(state, index) {
-        if (state.products[index].quantity === 0) {
-            state.products[index].quantity = 1;
+    ADD_TO_CART(state, newCart) {
+        if (state.products[newCart.index].quantity === 0) {
+            state.products[newCart.index].quantity = 1;
         };
+        state.products.push(newCart);
+        state.numberProducts++;
+        if (state.numberColumns < newCart[0].category.length) {
+            state.numberColumns = newCart[0].category.length;
+        }
     },
     ADD_QUANTITY(state, temp ) {
         let index = temp.index;
