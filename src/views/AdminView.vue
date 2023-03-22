@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>THIS IS YOUR SHOPPING APP!</h1>
-    <h3>(Admin View)</h3>
+    <h1>THIS IS YOUR ADMIN VIEW!</h1>
+    <h3>(Shopping App)</h3>
+    <router-view/>
   </div>
 </template>
 

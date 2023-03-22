@@ -14,34 +14,41 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/admin',
     name: 'admin-view',
     component: AdminView,
+    children: [
+      {
+        path: 'category-create',
+        name: 'category-create',
+        component: CreateCategory
+      },
+      {
+        path: 'categories',
+        name: 'categories',
+        component: ListCategories
+      },
+      {
+        path: 'product-create',
+        name: 'product-create',
+        component: CreateProduct
+      },
+      {
+        path: 'products',
+        name: 'products',
+        component: ListProducts
+      },
+    ]
+  },
+  {
+    path: '/',
+    name: 'home',
+    redirect: '/admin'
   },
   {
     path: '/publish',
     name: 'publish-view',
     component: ProductsPage,
-  },
-  {
-    path: '/admin/category-create',
-    name: 'category-create',
-    component: CreateCategory
-  },
-  {
-    path: '/admin/categories',
-    name: 'categories',
-    component: ListCategories
-  },
-  {
-    path: '/admin/product-create',
-    name: 'product-create',
-    component: CreateProduct
-  },
-  {
-    path: '/admin/products',
-    name: 'products',
-    component: ListProducts
   },
   {
     path: '/product-details/:product',
