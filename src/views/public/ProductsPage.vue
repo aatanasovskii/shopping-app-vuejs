@@ -15,12 +15,11 @@ export default {
   },
   methods: {
     addToCart(index) {
-      this.$store.commit("cart/ADD_TO_CART", [this.products.products[index], index], { root: true });
+      this.$store.commit("cart/ADD_TO_CART", index, { root: true });
       this.$store.commit("products/ADD_TO_CART", index, { root: true });
     },
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

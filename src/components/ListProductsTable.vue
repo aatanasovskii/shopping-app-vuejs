@@ -56,7 +56,7 @@ export default {
       this.$emit("delete-product", index);
     },
     publishProduct(index) {
-      this.$emit("publish-product", index);
+      this.$store.commit("products/PUBLISH_PRODUCT", index, { root: true });
     },
   },
 };

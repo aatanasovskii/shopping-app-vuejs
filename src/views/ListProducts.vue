@@ -12,9 +12,9 @@ export default {
     deleteProduct(index) {
       this.$store.commit("products/DELETE_PRODUCT", index, { root: true });
     },
-    publishProduct(index) {
-      this.$store.commit("products/PUBLISH_PRODUCT", index, { root: true });
-    },
+    // publishProduct(index) {
+    //   this.$store.commit("products/PUBLISH_PRODUCT", index, { root: true });
+    // },
   },
 }
 </script>

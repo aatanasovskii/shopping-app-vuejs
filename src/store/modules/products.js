@@ -35,7 +35,7 @@ export const state = {
                 title: "test3"
             }],
             published: true,
-            quantity: 1,
+            quantity: 0,
         }
     ],
 }

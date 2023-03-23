@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ol v-for="product in products.products" type="I">
-      <li v-if="product.quantity > 0">
+    <ol v-for="product in cart.cart" type="I">
+      <li>
         {{ product.title }} - quantity: {{ product.quantity }}
         <br> price: {{ product.price }}
       </li>
@@ -20,7 +20,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['products']),
+    ...mapState(['cart']),
     totalPrice() {
       this.total = 0;
       // for (let i=0; i<this.products.products.length; i++){
@@ -29,7 +29,7 @@ export default {
       //   }
       // }
 
-      return this.products.products
+      return this.cart.cart
           .filter(product => product.quantity > 0)
           .map(product => parseInt(product.price) * parseInt(product.quantity))
           .reduce((acc, currentValue) => acc + currentValue, 0);
@@ -38,6 +38,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
