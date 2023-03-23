@@ -45,7 +45,7 @@
         <label>Category:</label>
         <multiselect
             v-model="product.category"
-            :options="categories.categories"
+            :options="categories"
             track-by="title"
             :multiple="true"
             :close-on-select="false"
@@ -82,6 +82,9 @@ export default {
       submitStatus: null,
     };
   },
+  props: {
+    categories: Array,
+  },
   validations: {
     product: {
       title: { required },
@@ -89,9 +92,6 @@ export default {
       price: { required },
       category: { required },
     },
-  },
-  computed: {
-    ...mapState(['categories']),
   },
   methods: {
     submitForm() {

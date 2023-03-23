@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>This are your Published Products</h1>
-    <PublishProductsView @add-to-cart="addToCart($event)" />
+    <PublishProductsView @add-to-cart="addToCart($event)" :products="products.products" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     addToCart(index) {
-      this.$store.commit("cart/ADD_TO_CART", index, { root: true });
+      this.$store.dispatch("cart/ADD_TO_CART", index);
       // this.$store.commit("products/ADD_TO_CART", index, { root: true });
     },
   },

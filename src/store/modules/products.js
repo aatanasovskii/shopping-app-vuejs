@@ -62,6 +62,7 @@ export const mutations = {
     },
     PUBLISH_PRODUCT(state, index) {
         state.products[index].published = true;
+        console.log(state.products[index].published, "Published");
     },
     ADD_TO_CART(state, index) {
         if (state.products[index].quantity === 0) {

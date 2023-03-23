@@ -1,13 +1,13 @@
 <template>
   <div>
     <h2>All products that belong in the category: {{ category.title }}</h2>
-    <CategoryProductsList :category="category" />
+    <CategoryProductsList :category="category" :products="products.products" />
   </div>
 </template>
 
 <script>
 import CategoryProductsList from "@/components/CategoryProductsList.vue";
-
+import {mapState} from "vuex";
 export default {
   components: {CategoryProductsList},
   props: {
@@ -15,6 +15,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  computed: {
+    ...mapState(['products']),
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <div>
     <h3>Published Products:</h3>
     <div>
-      <ol v-for="(product, index) in products.products" type="I">
+      <ol v-for="(product, index) in products" type="I">
         <li v-if="product.published === true">
           <router-link :to="{ name: 'product-details', params: { product: product, index: index } }">
             {{ product.title }}
@@ -19,8 +19,8 @@
 import {mapState} from "vuex";
 
 export default {
-  computed: {
-    ...mapState(['products']),
+  props: {
+    products: Array,
   },
   methods: {
     addToCart(index) {

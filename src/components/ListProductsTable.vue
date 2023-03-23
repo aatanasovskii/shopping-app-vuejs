@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
 export default {
   data() {
     return {
@@ -35,15 +34,14 @@ export default {
       searchProducts: ""
     };
   },
+  props: {
+    products: Array,
+  },
   computed: {
-    ...mapState(['products']),
-    // products() {
-    //   return this.$store.state.products;
-    // },
     productsFinal() {
       return (this.searchProducts.length === 0
-          ? this.products.products
-          : this.products.products.filter(
+          ? this.products
+          : this.products.filter(
               (product) => product.title === this.searchProducts
           )).map(product => ({
         ...product,
@@ -56,7 +54,7 @@ export default {
       this.$emit("delete-product", index);
     },
     publishProduct(index) {
-      this.$store.commit("products/PUBLISH_PRODUCT", index, { root: true });
+      this.$emit("publish-product", index);
     },
   },
 };

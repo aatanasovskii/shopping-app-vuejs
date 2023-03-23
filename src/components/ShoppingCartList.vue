@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ol v-for="product in cart.cart" type="I">
+    <ol v-for="product in cart" type="I">
       <li>
         {{ product.title }} - quantity: {{ product.quantity }}
         <br> price: {{ product.price }}
@@ -11,16 +11,16 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-
 export default {
   data() {
     return {
       total: 0,
     };
   },
+  props: {
+    cart: Array,
+  },
   computed: {
-    ...mapState(['cart']),
     totalPrice() {
       this.total = 0;
       // for (let i=0; i<this.products.products.length; i++){
@@ -29,8 +29,7 @@ export default {
       //   }
       // }
 
-      return this.cart.cart
-          .filter(product => product.quantity > 0)
+      return this.cart
           .map(product => parseInt(product.price) * parseInt(product.quantity))
           .reduce((acc, currentValue) => acc + currentValue, 0);
     },

@@ -6,7 +6,7 @@
         <th>Title</th>
         <th>Description</th>
       </tr>
-      <tr v-for="(category, index) in categories.categories" :key="index">
+      <tr v-for="(category, index) in categories" :key="index">
         <td>{{ category.title }}</td>
         <td>{{ category.description }}</td>
       </tr>
@@ -15,11 +15,9 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-
 export default {
-  computed: {
-    ...mapState(['categories']),
+  props: {
+    categories: Array,
   }
 }
 </script>

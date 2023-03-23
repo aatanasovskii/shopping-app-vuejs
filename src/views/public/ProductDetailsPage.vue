@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Details of your product:</h1>
-    <ProductDetails @add-quantity="addQuantity($event)" :index="index" :product="product" />
+    <ProductDetails @add-quantity="addQuantity" :index="index" :product="product" />
   </div>
 </template>
 

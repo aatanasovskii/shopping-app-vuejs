@@ -1,13 +1,17 @@
 <template>
   <div class="categories">
-    <ListCategoriesTable />
+    <ListCategoriesTable :categories="categories.categories" />
   </div>
 </template>
 
 <script>
 import ListCategoriesTable from "@/components/ListCategoriesTable.vue";
+import {mapState} from "vuex";
 export default {
   components: {ListCategoriesTable},
+  computed: {
+    ...mapState(['categories']),
+  },
 }
 </script>
 

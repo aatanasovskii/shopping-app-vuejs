@@ -43,7 +43,6 @@ export default {
       },
     },
   },
-  computed: {},
   methods: {
     submitForm() {
       this.$v.$touch();
@@ -58,10 +57,7 @@ export default {
       console.log(this.category);
 
       this.$emit("add-category", this.category);
-    },
-    // addCategory() {
-    //   this.$store.commit("categories/ADD_CATEGORY", this.category, { root: true });
-    // },
+    }
   },
 };
 </script>

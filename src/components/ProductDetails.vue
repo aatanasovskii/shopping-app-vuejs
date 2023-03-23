@@ -26,8 +26,6 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-
 export default {
   data() {
     return {
@@ -46,7 +44,6 @@ export default {
     },
   },
   computed: {
-    ...mapState(['products']),
     productShow() {
       console.log(this.product);
       return this.product;

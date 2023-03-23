@@ -7,17 +7,15 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-
 export default {
   props: {
     category: {
       type: Object,
       required: true,
     },
+    products: Array,
   },
   computed: {
-    ...mapState(['products']),
     categoryProducts() {
       // console.log(this.category.title);
       //
@@ -31,7 +29,7 @@ export default {
       // };
       // console.log(temp);
 
-      return (this.products.products.filter(
+      return (this.products.filter(
           (product) => product.category.map(cat => cat.title)
               .includes(this.category.title)
       ));
