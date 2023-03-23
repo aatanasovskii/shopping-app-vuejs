@@ -16,7 +16,7 @@ export default {
   methods: {
     addToCart(index) {
       this.$store.commit("cart/ADD_TO_CART", index, { root: true });
-      this.$store.commit("products/ADD_TO_CART", index, { root: true });
+      // this.$store.commit("products/ADD_TO_CART", index, { root: true });
     },
   },
 };

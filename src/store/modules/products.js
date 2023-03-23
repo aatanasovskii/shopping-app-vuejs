@@ -1,3 +1,5 @@
+import { mutations as cartMutations } from './cart';
+
 export const namespaced = true;
 
 export const state = {

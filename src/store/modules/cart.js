@@ -10,6 +10,7 @@ export const state = {
 
 export const mutations = {
     ADD_TO_CART(state, index) {
+        productsMutations.ADD_TO_CART(productsState, index);
         state.cart.push(productsState.products[index]);
         state.numberProducts++;
     }
